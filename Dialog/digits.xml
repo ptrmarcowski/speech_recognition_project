@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar"
+         mode="voice" root="root" tag-format="semantics/1.0-literals" version="1.0" xml:lang="pl-pl">
+
+    <rule id="root">
+        <item repeat="1-10"><ruleref uri="#digit"/></item>
+    </rule>
+    <rule id="digit">
+        <one-of>
+            <item>zero    </item>
+            <item>jeden   </item>
+            <item>dwa     </item>
+            <item>trzy    </item>
+            <item>cztery  </item>
+            <item>pięć    </item>
+            <item>sześć   </item>
+            <item>siedem  </item>
+            <item>osiem   </item>
+            <item>dziewięć</item>
+        </one-of>
+    </rule>
+</grammar>

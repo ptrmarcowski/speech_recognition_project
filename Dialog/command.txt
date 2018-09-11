@@ -1,0 +1,14 @@
+#ABNF 1.0;
+language pl;
+mode voice;
+root $command;
+tag-format <semantics/1.0>;
+$command = $number {out.arg1 = rules.number} $operation {out.operation = rules.operation} $number {out.arg2 = rules.number};
+$number = $digit | $teens | $tens [ $digit] {out = rules.tens + rules.digit} | $tysiace {out = rules.tysiace};
+$tysiace = tysiąc {out = 1000} | $digit (tysięcy | tysiące) {out = rules.digit * 1000} [$tens [$digit]] {out += rules.tens + rules.digit} ;
+$digit =  zero {out = 0;} | jeden {out = 1;} | dwa {out = 2;} | trzy {out = 3;} | cztery {out = 4;} | pięć {out = 5;} | sześć {out = 6;} | siedem {out = 7;} | osiem {out = 8;} | dziewięć { out = 9;};
+$teens = jedenaście {out = 11;} | dwanaście {out = 12;} | trzynaście {out = 13;} | czternaście {out = 14;} | piętnaście {out = 15;} | szesnaście {out = 16;} | siedemnaście {out = 17;} | osiemnaście {out = 18;} | dziewiętnaście { out = 19};
+$tens = dwadzieścia {out = 20;} | trzydzieście {out = 30;} | czterdzieści {out = 40;} | piędziesiąt {out = 50;} | sześćdziesiąt {out = 60;} | siedemdziesiąt {out = 70} | osiemdziesiąt {out = 80} | dziewięćdziesiąt {out = 90;};
+
+
+$operation = plus | minus | razy | ( [dzielone | podzielone] (przez | na )) { out = "przez"};

@@ -1,0 +1,21 @@
+﻿#ABNF 1.0;
+language pl;
+mode voice;
+root $wieza;
+tag-format <semantics/1.0>;
+$wieza = $włącz $radio { out=rules.włącz} | $wyłącz $radio { out=rules.wyłącz } | $następna $stacja { out=rules.następna } | $nagraj { out=rules.nagraj } | $stop { out=rules.stop } | $godzina { out=rules.godzina } | $data { out=rules.data } | $podgłośnij { out=rules.podgłośnij } | $tak { out=rules.tak } | $nie { out=rules.nie } | $numer { out=rules.numer };
+
+$włącz = włącz {out = 1;} | puść {out = 1;};
+$wyłącz = wyłącz {out = 2;};
+$następna = następna {out = 3;} | następny {out = 3;} | poprzednia {out = 3;} | poprzedni {out = 3;} | dalej {out = 3;} | cofnij {out = 3;} | zmień {out = 11;} | przełącz {out = 11;};
+$stacja = utwór | stację | piosenkę | stacja | piosenka;
+$nagraj = nagraj {out = 4;} | nagraj to {out = 4;} | nagrywanie {out = 4;};
+$stop = stop {out = 5;} | zatrzymaj {out = 5;} | koniec {out=5;};
+$godzina = godzina {out = 6;} | czas {out = 6;};
+$data = data {out = 7;} | dzień { out = 7;};
+$podgłośnij = podgłośnij {out = 8;} | głośniej {out = 8;} | ścisz {out = 8;} | ciszej {out = 8;};
+$tak = tak {out = 9;} | jasne {out = 9;} | dobrze {out = 9;} | może być {out = 9;};
+$nie = nie {out = 10;} | więcej {out = 10;} | mało {out = 10;} | jeszcze {out = 10;};
+$numer = jeden {out = 12;} | dwa {out = 12;} | trzy {out = 12;} | cztery {out = 12;} | pięć {out = 12;} | sześć {out = 12;} | siedem {out = 12;} | osiem {out = 12;} | dziewięć {out = 12;} | dziesięć {out = 12;} | pierwszy {out = 12;} | drugi {out = 12;} | trzeci {out = 12;} | czwarty {out = 12;} | piąty {out = 12;} | szósty {out = 12;} | siódmy {out = 12;} | dziewiąty {out = 12;} | dziesiąty {out = 12;};
+
+$radio = radio|pamięć przenośną|płytę;
